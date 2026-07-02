@@ -1,0 +1,16 @@
+A) azul 
+B) amarillo 
+C)amarillo
+d)
+Por qué: en el paso 4, ALFA crea favicon.ico en TESTING y lo pushea. En el paso 5, BETA hace pull (trae el favicon de ALFA), pero después crea su propio favicon.ico con el mismo nombre de archivo
+e) todos menos alfa.
+F- 
+El problema es un conflicto de sincronizacion.
+Como ALFA sube primero sus cambios entran sin problemas. El problema aparece cuando BETA quiere hacer el push despues, Git se lo rechaza porque el servidor tiene cambios que el no tiene localmente. BETA debe hace un git pull, pero como ambos modificaron la misma línea del index.html. Git no puede unirlos automáticamente y salta un conflicto. A GAMMA le pasa lo mismo acumulando mas conflictos.
+G)
+1: Hacer git pull, resolver el conflicto agregando los tres <p> y luego hacer git push.
+2: Hacer git pull -rebase`, resolver el conflicto si aparece y después hacer git push, dejando un historial más ordenado.
+H) Si usan git push -f, cada uno sobrescribe los cambios del anterior. Al final, solo queda el <p> de GAMMA, y los de ALFA y BETA se pierden.
+I) git checkout DESARROLLO
+git merge TESTING
+git push origin DESARROLLO
